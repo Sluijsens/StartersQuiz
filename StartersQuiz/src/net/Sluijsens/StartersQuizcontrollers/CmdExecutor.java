@@ -1,6 +1,6 @@
-package controllers;
+package net.Sluijsens.StartersQuizcontrollers;
 
-import me.Sluijsens.StartersQuiz.StartersQuiz;
+import net.Sluijsens.StartersQuiz.StartersQuiz;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

@@ -1,8 +1,13 @@
-package me.Sluijsens.StartersQuiz;
+package net.Sluijsens.StartersQuiz;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import net.Sluijsens.StartersQuiz.data.ConfigHandler;
+import net.Sluijsens.StartersQuizcontrollers.CmdExecutor;
+import net.Sluijsens.StartersQuizcontrollers.LanguageHandler;
+import net.Sluijsens.StartersQuizcontrollers.PlayerHandler;
+import net.Sluijsens.StartersQuizcontrollers.QuizHandler;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 
@@ -11,12 +16,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import controllers.CmdExecutor;
-import controllers.LanguageHandler;
-import controllers.PlayerHandler;
-import controllers.QuizHandler;
 
-import data.ConfigHandler;
 
 public class StartersQuiz extends JavaPlugin {
 	Logger log = Logger.getLogger("Minecraft");

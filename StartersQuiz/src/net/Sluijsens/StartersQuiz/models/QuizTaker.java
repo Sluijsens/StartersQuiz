@@ -1,6 +1,6 @@
-package models;
+package net.Sluijsens.StartersQuiz.models;
 
-import me.Sluijsens.StartersQuiz.StartersQuiz;
+import net.Sluijsens.StartersQuiz.StartersQuiz;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;

@@ -1,8 +1,8 @@
-package controllers;
+package net.Sluijsens.StartersQuizcontrollers;
 
 import java.io.File;
 
-import me.Sluijsens.StartersQuiz.StartersQuiz;
+import net.Sluijsens.StartersQuiz.StartersQuiz;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;

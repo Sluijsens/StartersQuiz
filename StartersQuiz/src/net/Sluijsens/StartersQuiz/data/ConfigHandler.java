@@ -1,10 +1,10 @@
-package data;
+package net.Sluijsens.StartersQuiz.data;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import me.Sluijsens.StartersQuiz.StartersQuiz;
+import net.Sluijsens.StartersQuiz.StartersQuiz;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;

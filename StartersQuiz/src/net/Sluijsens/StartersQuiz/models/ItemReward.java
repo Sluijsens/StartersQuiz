@@ -1,4 +1,4 @@
-package models;
+package net.Sluijsens.StartersQuiz.models;
 
 /**
  * Holds info about and item reward.
