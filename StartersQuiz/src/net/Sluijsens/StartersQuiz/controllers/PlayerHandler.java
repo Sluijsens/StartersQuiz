@@ -1,4 +1,4 @@
-package net.Sluijsens.StartersQuizcontrollers;
+package net.Sluijsens.StartersQuiz.controllers;
 
 import net.Sluijsens.StartersQuiz.StartersQuiz;
 

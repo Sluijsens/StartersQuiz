@@ -3,11 +3,11 @@ package net.Sluijsens.StartersQuiz;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import net.Sluijsens.StartersQuiz.controllers.CmdExecutor;
+import net.Sluijsens.StartersQuiz.controllers.LanguageHandler;
+import net.Sluijsens.StartersQuiz.controllers.PlayerHandler;
+import net.Sluijsens.StartersQuiz.controllers.QuizHandler;
 import net.Sluijsens.StartersQuiz.data.ConfigHandler;
-import net.Sluijsens.StartersQuizcontrollers.CmdExecutor;
-import net.Sluijsens.StartersQuizcontrollers.LanguageHandler;
-import net.Sluijsens.StartersQuizcontrollers.PlayerHandler;
-import net.Sluijsens.StartersQuizcontrollers.QuizHandler;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 
@@ -15,8 +15,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-
-
 
 public class StartersQuiz extends JavaPlugin {
 	Logger log = Logger.getLogger("Minecraft");
@@ -30,6 +28,9 @@ public class StartersQuiz extends JavaPlugin {
 	public static Permission permission = null;
 	public static Economy economy = null;
 	
+	/**
+	 * Gets called when plugin is enabled
+	 */
 	public void onEnable() {
 		config_handler = new ConfigHandler("config", this.getDataFolder() + "/", this);
 		language_handler = new LanguageHandler(config_handler.getString("Language", "en-GB"), this.getDataFolder() + "/lang", this);
@@ -58,10 +59,15 @@ public class StartersQuiz extends JavaPlugin {
 		getCommand("sqanswer").setExecutor(cmdExecutor);
 		getCommand("sqretry").setExecutor(cmdExecutor);
 		getCommand("sqreload").setExecutor(cmdExecutor);
+		
+		log.info("The plugin " + this.getName() + " v" + this.getDescription().getVersion() + " is enabled.");
 	}
 	
+	/**
+	 * Gets called when the plugin is disabled
+	 */
 	public void onDisable() {
-		
+		log.info("The plugin " + this.getName() + " v" + this.getDescription().getVersion() + " is disabled.");
 	}
 	
 	/**
@@ -89,4 +95,18 @@ public class StartersQuiz extends JavaPlugin {
 
         return (economy != null);
     }
+	
+	public boolean in_array(Object value, Object[] array) {
+		for(Object o: array) {
+			if(o == value) return true;
+		}
+		return false;
+	}
+	
+	public boolean in_array(String value, String[] array) {
+		for(String s: array) {
+			if(s.equalsIgnoreCase(value)) return true;
+		}
+		return false;
+	}
 }
