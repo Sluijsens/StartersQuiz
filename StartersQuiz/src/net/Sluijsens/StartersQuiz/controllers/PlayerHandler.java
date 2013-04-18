@@ -10,8 +10,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
@@ -43,15 +45,13 @@ public class PlayerHandler implements Listener {
 	}
 	
 	@EventHandler(priority = EventPriority.NORMAL)
-	public void onPlayerTeleport(PlayerTeleportEvent event) {
-		World from = event.getFrom().getWorld();
-		World to = event.getTo().getWorld();
-		
-		if(from != to) {
-			Player player = event.getPlayer();
-			
-			player.sendMessage(plugin.chat_tag + " Same world");
-		}
+	public void onPlayerChangedWorld(PlayerChangedWorldEvent event) {
+		onPlayerJoinedWorld(event.getPlayer());
+	}
+	
+	@EventHandler(priority = EventPriority.NORMAL)
+	public void onPlayerJoin(PlayerJoinEvent event) {
+		onPlayerJoinedWorld(event.getPlayer());
 	}
 	
 	@EventHandler(priority = EventPriority.HIGH)
@@ -61,6 +61,18 @@ public class PlayerHandler implements Listener {
 	
 	@EventHandler(priority = EventPriority.HIGH)
 	public void onBlockPlace(BlockPlaceEvent event) {
+		
+	}
+	
+	public void onPlayerJoinedWorld(Player player) {
+		player.sendMessage(plugin.chat_tag + " Same world");
+	}
+	
+	public void loadPlayer(Player player) {
+		
+	}
+	
+	public void checkPlayer(Player player) {
 		
 	}
 }

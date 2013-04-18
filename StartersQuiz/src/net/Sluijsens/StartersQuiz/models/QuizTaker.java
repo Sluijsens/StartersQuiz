@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 
 public class QuizTaker {
 	private int current_question = 0;
+	private String current_quiz = null;
 	private ConfigHandler config;
 	private StartersQuiz plugin;
 	
@@ -18,7 +19,25 @@ public class QuizTaker {
 	public QuizTaker(Player player, StartersQuiz instance) {
 		this.plugin = instance;
 		this.setConfig(new ConfigHandler(player.getName(), instance.getDataFolder() + "/players/", instance));
+		this.findCurrentQuiz(player);
 	}
+	
+	/**
+	 * Finds the current quiz the player has to do
+	 * @param player
+	 */
+	public void findCurrentQuiz(Player player) {
+		String[] quizzes = (String[]) StartersQuiz.quiz_handler.quizzes.keySet().toArray();
+		
+		for(String quiz: quizzes) {
+			if(StartersQuiz.permission.has(player, "sq.quiz." + quiz)) {
+				this.setCurrent_quiz(quiz);
+				break;
+			}
+		}
+	}
+	
+	
 	
 	/**
 	 * Get the current question the Quiztaker is at
@@ -37,6 +56,14 @@ public class QuizTaker {
 	}
 	
 	/**
+	 * Get the current quiz the player has to do
+	 * @return
+	 */
+	public String getCurrent_quiz() {
+		return current_quiz;
+	}
+	
+	/**
 	 * Set the current question
 	 * @param current_question
 	 */
@@ -50,6 +77,10 @@ public class QuizTaker {
 	 */
 	public void setConfig(ConfigHandler config) {
 		this.config = config;
+	}
+
+	public void setCurrent_quiz(String current_quiz) {
+		this.current_quiz = current_quiz;
 	}
 
 }

@@ -56,12 +56,6 @@ public class StartersQuiz extends JavaPlugin {
 		
 		//Register Command events
 		getCommand("sq").setExecutor(cmdExecutor);
-		getCommand("sqhelp").setExecutor(cmdExecutor);
-		getCommand("sqstart").setExecutor(cmdExecutor);
-		getCommand("sqquestion").setExecutor(cmdExecutor);
-		getCommand("sqanswer").setExecutor(cmdExecutor);
-		getCommand("sqretry").setExecutor(cmdExecutor);
-		getCommand("sqreload").setExecutor(cmdExecutor);
 		
 		log.info("The plugin " + this.getName() + " v" + this.getDescription().getVersion() + " is enabled.");
 	}

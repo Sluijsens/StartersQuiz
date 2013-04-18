@@ -1,7 +1,7 @@
 name: StartersQuiz
 author: Sluijsens
 description: Let your (new) players do a quiz before they can do anything on your server!
-main: me.sluijsens.StartersQuiz.StartersQuiz
+main: net.Sluijsens.StartersQuiz.StartersQuiz
 depend: [Vault]
 version: 3.0
 
