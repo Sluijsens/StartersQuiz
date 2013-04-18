@@ -2,6 +2,8 @@ package net.Sluijsens.StartersQuiz.controllers;
 
 import net.Sluijsens.StartersQuiz.StartersQuiz;
 
+import org.bukkit.World;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -42,7 +44,14 @@ public class PlayerHandler implements Listener {
 	
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onPlayerTeleport(PlayerTeleportEvent event) {
+		World from = event.getFrom().getWorld();
+		World to = event.getTo().getWorld();
 		
+		if(from != to) {
+			Player player = event.getPlayer();
+			
+			player.sendMessage(plugin.chat_tag + " Same world");
+		}
 	}
 	
 	@EventHandler(priority = EventPriority.HIGH)

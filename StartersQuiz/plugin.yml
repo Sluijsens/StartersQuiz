@@ -1,0 +1,40 @@
+name: StartersQuiz
+author: Sluijsens
+description: Let your (new) players do a quiz before they can do anything on your server!
+main: me.sluijsens.StartersQuiz.StartersQuiz
+depend: [Vault]
+version: 3.0
+
+commands:
+    sq:
+        description: General and only command of StartersQuiz.
+        permission: sq.help
+        usage: /sq
+
+permissions:
+    sq.quiz:
+        dscription: Gives access to all sq commands.
+        children:
+            sq.help: true
+            sq.question: true
+            sq.start: true
+            sq.answer: true
+            sq.retry: true
+    sq.help:
+        description: Permission for viewing the help page.
+        default: false
+    sq.start:
+        description: Gives access to the start command.
+        default: false
+    sq.question:
+        description: Permission to view the question again.
+        default: false
+    sq.answer:
+        description: Permission to answer the question(s).
+        default: false
+    sq.retry:
+        description: Permission to retry the quiz.
+        default: false
+    sq.reload:
+        description: Permission to reload StartersQuiz.
+        default: false
