@@ -1,8 +1,9 @@
 package net.Sluijsens.StartersQuiz.controllers;
 
 import net.Sluijsens.StartersQuiz.StartersQuiz;
+import net.Sluijsens.StartersQuiz.data.ConfigHandler;
+import net.Sluijsens.StartersQuiz.models.QuizTaker;
 
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -15,7 +16,6 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
 
 public class PlayerHandler implements Listener {
 	private StartersQuiz plugin;
@@ -65,14 +65,21 @@ public class PlayerHandler implements Listener {
 	}
 	
 	public void onPlayerJoinedWorld(Player player) {
-		player.sendMessage(plugin.chat_tag + " Same world");
+		checkPlayer(player);
+		loadPlayer(player);
 	}
 	
 	public void loadPlayer(Player player) {
 		
 	}
 	
-	public void checkPlayer(Player player) {
+	public static boolean isFinished(QuizTaker quiz_taker) {
+		ConfigHandler config = quiz_taker.getConfig();
+		
+		return false;
+	}
+	
+	public static void checkPlayer(Player player) {
 		
 	}
 }

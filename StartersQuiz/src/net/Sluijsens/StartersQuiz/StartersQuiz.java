@@ -37,6 +37,11 @@ public class StartersQuiz extends JavaPlugin {
 	 * Gets called when plugin is enabled
 	 */
 	public void onEnable() {
+		String a = "a";
+		String b = a;
+		
+		a = "b";
+		log.info("Startersquiz A: " + a + " and B: " + b);
 		this.loadConfig();
 		
 		if(this.getServer().getPluginManager().getPlugin("Vault") == null) {
@@ -57,7 +62,7 @@ public class StartersQuiz extends JavaPlugin {
 		//Register Command events
 		getCommand("sq").setExecutor(cmdExecutor);
 		
-		log.info("The plugin " + this.getName() + " v" + this.getDescription().getVersion() + " is enabled.");
+		log.info(this.getName() + " v" + this.getDescription().getVersion() + " is enabled.");
 	}
 	
 	/**

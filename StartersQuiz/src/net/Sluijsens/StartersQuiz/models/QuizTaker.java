@@ -1,6 +1,7 @@
 package net.Sluijsens.StartersQuiz.models;
 
 import net.Sluijsens.StartersQuiz.StartersQuiz;
+import net.Sluijsens.StartersQuiz.controllers.PlayerHandler;
 import net.Sluijsens.StartersQuiz.data.ConfigHandler;
 
 import org.bukkit.entity.Player;
@@ -9,7 +10,9 @@ public class QuizTaker {
 	private int current_question = 0;
 	private String current_quiz = null;
 	private ConfigHandler config;
-	private StartersQuiz plugin;
+	
+	private boolean started = false;
+	private boolean finished = false;
 	
 	/**
 	 * Constructs QuizTaker with given data
@@ -17,7 +20,6 @@ public class QuizTaker {
 	 * @param instance
 	 */
 	public QuizTaker(Player player, StartersQuiz instance) {
-		this.plugin = instance;
 		this.setConfig(new ConfigHandler(player.getName(), instance.getDataFolder() + "/players/", instance));
 		this.findCurrentQuiz(player);
 	}
@@ -34,6 +36,10 @@ public class QuizTaker {
 				this.setCurrent_quiz(quiz);
 				break;
 			}
+		}
+		
+		if(this.current_quiz != null) {
+			PlayerHandler.isFinished(this);
 		}
 	}
 	

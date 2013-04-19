@@ -13,7 +13,7 @@ commands:
 
 permissions:
     sq.quiz:
-        dscription: Gives access to all sq commands.
+        description: Gives access to all sq commands.
         children:
             sq.help: true
             sq.question: true
