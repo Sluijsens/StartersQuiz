@@ -67,6 +67,7 @@ public class PlayerHandler implements Listener {
 	public void onPlayerJoinedWorld(Player player) {
 		checkPlayer(player);
 		loadPlayer(player);
+		StartersQuiz.players.put(player, new QuizTaker(player, plugin));
 	}
 	
 	public void loadPlayer(Player player) {
@@ -75,7 +76,17 @@ public class PlayerHandler implements Listener {
 	
 	public static boolean isFinished(QuizTaker quiz_taker) {
 		ConfigHandler config = quiz_taker.getConfig();
-		
+		if(config.isSet(quiz_taker.getCurrent_quiz() + ".finished")) {
+			return config.getBoolean(quiz_taker.getCurrent_quiz() + ".finished");
+		}
+		return false;
+	}
+	
+	public static boolean isStarted(QuizTaker quiz_taker) {
+		ConfigHandler config = quiz_taker.getConfig();
+		if(config.isSet(quiz_taker.getCurrent_quiz() + ".started")) {
+			return config.getBoolean(quiz_taker.getCurrent_quiz() + ".started");
+		}
 		return false;
 	}
 	

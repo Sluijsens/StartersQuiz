@@ -20,13 +20,13 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class StartersQuiz extends JavaPlugin {
-	Logger log = Logger.getLogger("Minecraft");
+	public static Logger log = Logger.getLogger("Minecraft");
 	
 	public static HashMap<Player, QuizTaker> players = new HashMap<Player, QuizTaker>();
 	
-	public static ConfigHandler config_handler;
-	public static LanguageHandler language_handler;
-	public static QuizHandler quiz_handler;
+	public ConfigHandler config_handler;
+	public LanguageHandler language_handler;
+	public QuizHandler quiz_handler;
 	private final PlayerHandler playerListener = new PlayerHandler(this);
 	
 	public static String chat_tag = ChatColor.AQUA + "*StartersQuiz* " + ChatColor.GOLD;
@@ -37,15 +37,10 @@ public class StartersQuiz extends JavaPlugin {
 	 * Gets called when plugin is enabled
 	 */
 	public void onEnable() {
-		String a = "a";
-		String b = a;
-		
-		a = "b";
-		log.info("Startersquiz A: " + a + " and B: " + b);
 		this.loadConfig();
 		
 		if(this.getServer().getPluginManager().getPlugin("Vault") == null) {
-			log.log(Level.SEVERE, "The plugin Vault ha snot been found so " + getDescription().getName() + " will be disabled.", getDescription().getName());
+			log.log(Level.SEVERE, "The plugin Vault has not been found so " + getDescription().getName() + " will be disabled.", getDescription().getName());
 		} else {
 			setupPermissions();
 			setupEconomy();
@@ -124,20 +119,12 @@ public class StartersQuiz extends JavaPlugin {
 		return false;
 	}
 	
-	public boolean loadConfig() {
-		try {
-			config_handler = new ConfigHandler("config", this.getDataFolder() + "/", this);
-			language_handler = new LanguageHandler(config_handler.getString("Language", "en-GB"), this.getDataFolder() + "/lang", this);
-			quiz_handler = new QuizHandler(this);
-			
-			this.getServer().broadcastMessage(chat_tag + "Loaded configuration files!");
-			
-			return true;
-		} catch(Exception e) {
-			this.getServer().broadcastMessage(chat_tag + "Failed to load configuration files!");
-		}
+	public void loadConfig() {
+		this.config_handler = new ConfigHandler("config", this.getDataFolder() + "/", this);
+		this.language_handler = new LanguageHandler(config_handler.getString("Language", "en-GB"), this.getDataFolder() + "/lang", this);
+		this.quiz_handler = new QuizHandler(this);
 		
-		return false;
+		log.info("Loaded configuration files!");
 	}
 	
 	public void reload() {
